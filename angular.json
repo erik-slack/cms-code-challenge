@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "projects": {
+    "code-challenge": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/code-challenge",
+      "sourceRoot": "apps/code-challenge/src",
+      "prefix": "impartner",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/code-challenge",
+            "index": "apps/code-challenge/src/index.html",
+            "main": "apps/code-challenge/src/main.ts",
+            "polyfills": "apps/code-challenge/src/polyfills.ts",
+            "tsConfig": "apps/code-challenge/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/code-challenge/src/favicon.ico",
+              "apps/code-challenge/src/assets"
+            ],
+            "styles": ["apps/code-challenge/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/code-challenge/src/environments/environment.ts",
+                  "with": "apps/code-challenge/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "code-challenge:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "code-challenge:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "code-challenge:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/code-challenge/tsconfig.app.json",
+              "apps/code-challenge/tsconfig.spec.json",
+              "apps/code-challenge/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/code-challenge/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/code-challenge/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "code-challenge-e2e": {
+      "root": "apps/code-challenge-e2e",
+      "sourceRoot": "apps/code-challenge-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/code-challenge-e2e/cypress.json",
+            "tsConfig": "apps/code-challenge-e2e/tsconfig.e2e.json",
+            "devServerTarget": "code-challenge:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "code-challenge:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/code-challenge-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/code-challenge-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "code-challenge"
+}

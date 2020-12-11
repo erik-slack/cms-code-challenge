@@ -1,0 +1,30 @@
+<ng-container *ngIf="!readOnly">
+  <ng-container *ngTemplateOutlet="textWidgetEditTemplate; context: {widget: widget}"></ng-container>
+</ng-container>
+<ng-container *ngIf="readOnly">
+  <ng-container *ngTemplateOutlet="textWidgetROTemplate; context: {widget: widget}"></ng-container>
+</ng-container>
+
+<!-- I did it this way to show more knowledge, otherwise I'd just put the templates in the containers directly. -->
+
+<ng-template #textWidgetEditTemplate let-widget="widget">
+  <div class="icon-container type">
+    <mat-icon>editor</mat-icon>
+  </div>
+  <div class="widget-content">
+    <ckeditor [editor]="editor"
+      data="{{widget.text}}"
+      [(ngModel)]="widget.text"
+      (blur)="widgetBlurred()">
+    </ckeditor>
+  </div>
+  <div class="icon-container">
+    <button mat-icon-button (click)="deleteBtnClicked()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #textWidgetROTemplate let-widget="widget">
+  <div class="widget-content" [innerHTML]="widget.text"></div>
+</ng-template>

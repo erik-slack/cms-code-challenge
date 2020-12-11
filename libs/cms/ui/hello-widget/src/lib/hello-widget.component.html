@@ -1,0 +1,32 @@
+<ng-container *ngIf="!readOnly">
+  <ng-container *ngTemplateOutlet="helloWidgetEditTemplate; context: {widget: widget}"></ng-container>
+</ng-container>
+<ng-container *ngIf="readOnly">
+  <ng-container *ngTemplateOutlet="helloWidgetROTemplate; context: {widget: widget}"></ng-container>
+</ng-container>
+
+<!-- I did it this way to show more knowledge, otherwise I'd just put the templates in the containers directly. -->
+
+<!-- Templates -->
+
+<ng-template #helloWidgetEditTemplate let-widget="widget">
+  <div class="icon-container type">
+    <mat-icon>emoji_people</mat-icon>
+  </div>
+  <div class="widget-content">
+    Hello {{userName}}!
+    It's currently {{now | date : 'medium'}}
+  </div>
+  <div class="icon-container">
+    <button mat-icon-button (click)="deleteBtnClicked()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #helloWidgetROTemplate let-widget="widget">
+  <div class="widget-content">
+    Hello {{userName}}!
+    It's currently {{now | date : 'medium'}}
+  </div>
+</ng-template>

@@ -15,7 +15,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@impartner/cms/ui/hello-widget": [
+        "libs/cms/ui/hello-widget/src/index.ts"
+      ],
+      "@impartner/cms/ui/text-widget": ["libs/cms/ui/text-widget/src/index.ts"],
+      "@impartner/cms/ui/image-widget": [
+        "libs/cms/ui/image-widget/src/index.ts"
+      ],
+      "@impartner/cms/state/widgets": ["libs/cms/state/widgets/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -25,7 +25,10 @@
               "apps/code-challenge/src/favicon.ico",
               "apps/code-challenge/src/assets"
             ],
-            "styles": ["apps/code-challenge/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "apps/code-challenge/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -120,6 +123,126 @@
             "tsConfig": ["apps/code-challenge-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/code-challenge-e2e/**/*"]
           }
+        }
+      }
+    },
+    "cms-ui-hello-widget": {
+      "projectType": "library",
+      "root": "libs/cms/ui/hello-widget",
+      "sourceRoot": "libs/cms/ui/hello-widget/src",
+      "prefix": "impartner",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cms/ui/hello-widget/tsconfig.lib.json",
+              "libs/cms/ui/hello-widget/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cms/ui/hello-widget/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cms/ui/hello-widget/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "cms-ui-text-widget": {
+      "projectType": "library",
+      "root": "libs/cms/ui/text-widget",
+      "sourceRoot": "libs/cms/ui/text-widget/src",
+      "prefix": "impartner",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cms/ui/text-widget/tsconfig.lib.json",
+              "libs/cms/ui/text-widget/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cms/ui/text-widget/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cms/ui/text-widget/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "cms-ui-image-widget": {
+      "projectType": "library",
+      "root": "libs/cms/ui/image-widget",
+      "sourceRoot": "libs/cms/ui/image-widget/src",
+      "prefix": "impartner",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cms/ui/image-widget/tsconfig.lib.json",
+              "libs/cms/ui/image-widget/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cms/ui/image-widget/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cms/ui/image-widget/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "cms-state-widgets": {
+      "projectType": "library",
+      "root": "libs/cms/state/widgets",
+      "sourceRoot": "libs/cms/state/widgets/src",
+      "prefix": "impartner",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cms/state/widgets/tsconfig.lib.json",
+              "libs/cms/state/widgets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cms/state/widgets/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cms/state/widgets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }

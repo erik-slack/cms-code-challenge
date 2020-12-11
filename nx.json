@@ -29,6 +29,18 @@
     "code-challenge-e2e": {
       "tags": [],
       "implicitDependencies": ["code-challenge"]
+    },
+    "cms-ui-hello-widget": {
+      "tags": ["scope:cms", "type:ui"]
+    },
+    "cms-ui-text-widget": {
+      "tags": ["scope:cms", "type:ui"]
+    },
+    "cms-ui-image-widget": {
+      "tags": ["scope:cms", "type:ui"]
+    },
+    "cms-state-widgets": {
+      "tags": ["scope:cms", "type:state"]
     }
   }
 }
